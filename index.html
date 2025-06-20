@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOOVE NG - Quality Score Board</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="scripts/main.js"></script>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="container">
+        <header>
+            <h1>MOOVE NG</h1>
+            <h2>Quality Score Board</h2>
+        </header>
+
+        <main>
+            <div class="glass-card agent-management">
+                <h3>Agent Management</h3>
+                <div class="form-group">
+                    <input type="text" id="agentName" placeholder="Enter agent name">
+                    <button id="addAgent">Add Agent</button>
+                </div>
+                <div class="form-group">
+                    <select id="agentList">
+                        <option value="">Select agent to remove</option>
+                    </select>
+                    <button id="removeAgent">Remove Agent</button>
+                </div>
+            </div>
+
+            <div class="glass-card kpi-evaluation">
+                <h3>KPI Evaluation</h3>
+                <div class="form-group">
+                    <label for="selectedAgent">Select Agent:</label>
+                    <select id="selectedAgent" required>
+                        <option value="">-- Select Agent --</option>
+                    </select>
+                </div>
+                
+                <div class="kpi-item">
+                    <label>Proper Greetings (15%)</label>
+                    <input type="number" id="greetings" min="0" max="100" value="0">
+                </div>
+                <div class="kpi-item">
+                    <label>Empathy Shown (20%)</label>
+                    <input type="number" id="empathy" min="0" max="100" value="0">
+                </div>
+                <div class="kpi-item">
+                    <label>Issue Resolution (25%)</label>
+                    <input type="number" id="resolution" min="0" max="100" value="0">
+                </div>
+                <div class="kpi-item">
+                    <label>Product Knowledge (20%)</label>
+                    <input type="number" id="knowledge" min="0" max="100" value="0">
+                </div>
+                <div class="kpi-item">
+                    <label>Proper Closing (15%)</label>
+                    <input type="number" id="closing" min="0" max="100" value="0">
+                </div>
+                <div class="kpi-item">
+                    <label>Compliance (5%)</label>
+                    <input type="number" id="compliance" min="0" max="100" value="0">
+                </div>
+            </div>
+
+            <div class="glass-card comments">
+                <h3>Evaluation Comments</h3>
+                <textarea id="evaluationComments" placeholder="Enter your evaluation comments..." required></textarea>
+            </div>
+
+            <div class="glass-card score-history">
+                <h3>Score History</h3>
+                <canvas id="scoreChart"></canvas>
+            </div>
+
+            <div class="glass-card improvement-areas">
+                <h3>Areas for Improvement</h3>
+                <ul id="improvementList">
+                    <!-- Will be populated by JavaScript -->
+                </ul>
+            </div>
+
+            <div class="glass-card performance-filter">
+                <h3>Performance Filter</h3>
+                <div class="form-group">
+                    <label>Select Agents:</label>
+                    <select id="filterAgents" multiple>
+                        <!-- Agents will be populated here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>From:</label>
+                    <input type="date" id="startDate">
+                </div>
+                <div class="form-group">
+                    <label>To:</label>
+                    <input type="date" id="endDate">
+                </div>
+                <button id="filterResults">Filter Results</button>
+                <button id="viewPerformanceChart">Performance Chart</button>
+            </div>
+
+            <button id="submitEvaluation" class="submit-btn">Submit Evaluation</button>
+        </main>
+    </div>
+
+    <script src="scripts/chart.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

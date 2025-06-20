@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOOVE NG - Team Performance</title>
+    <link rel="stylesheet" href="styles/performance.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="scripts/main.js"></script>
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="container">
+        <header>
+            <h1>MOOVE NG</h1>
+            <h2>Team Performance Chart</h2>
+        </header>
+
+        <main>
+            <div class="glass-card performance-container">
+                <div class="performance-header">
+                    <h3>Team Performance Overview</h3>
+                    <button id="backToResults">Back to Results</button>
+                </div>
+                
+                <div class="filter-info">
+                    <p id="performanceFilterDetails"></p>
+                </div>
+                
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/performance.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOOVE NG - Evaluation Results</title>
+    <link rel="stylesheet" href="styles/results.css">
+</head>
+<body>
+    <div class="background-overlay"></div>
+    <div class="container">
+        <header>
+            <h1>MOOVE NG</h1>
+            <h2>Evaluation Results</h2>
+        </header>
+
+        <main>
+            <div class="glass-card results-container">
+                <div class="results-header">
+                    <h3>Filtered Evaluation Results</h3>
+                    <div class="actions">
+                        <button id="exportToSheet">Export to Sheet</button>
+                        <button id="backToMain">Back to Main</button>
+                    </div>
+                </div>
+                
+                <div class="filter-info">
+                    <p id="filterDetails"></p>
+                </div>
+                
+                <div class="table-container">
+                    <table id="resultsTable">
+                        <thead>
+                            <tr>
+                                <th>Agent</th>
+                                <th>Date</th>
+                                <th>Greetings</th>
+                                <th>Empathy</th>
+                                <th>Resolution</th>
+                                <th>Knowledge</th>
+                                <th>Closing</th>
+                                <th>Compliance</th>
+                                <th>Total Score</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Results will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/results.js"></script>
+</body>
+</html>

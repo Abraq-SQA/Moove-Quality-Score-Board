@@ -1,0 +1,128 @@
+:root {
+    --orange-dark: #e67e22;
+    --orange-light: #f39c12;
+    --black: #2c3e50;
+    --white: #ecf0f1;
+    --grey: #bdc3c7;
+    --grey-dark: #7f8c8d;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('../assets/background-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--white);
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+.background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: var(--orange-dark);
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header h2 {
+    font-size: 1.5rem;
+    color: var(--white);
+    margin: 5px 0 0;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.performance-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.performance-header h3 {
+    margin: 0;
+    color: var(--orange-light);
+}
+
+.performance-header button {
+    background-color: var(--orange-dark);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.performance-header button:hover {
+    background-color: var(--orange-light);
+}
+
+.filter-info {
+    margin-bottom: 20px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+.chart-container {
+    width: 100%;
+    height: 500px;
+}
+
+#performanceChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .performance-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .performance-header button {
+        margin-top: 10px;
+    }
+    
+    .chart-container {
+        height: 400px;
+    }
+}
