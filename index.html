@@ -6,10 +6,9 @@
     <title>MOOVE NG - Quality Score Board</title>
     <link rel="stylesheet" href="styles/main.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="scripts/main.js"></script>
 </head>
 <body>
-    <div class="background-overlay"></div>
+    <div class="background-image"></div>
     <div class="container">
         <header>
             <h1>MOOVE NG</h1>
@@ -17,97 +16,124 @@
         </header>
 
         <main>
-            <div class="glass-card agent-management">
+            <!-- Agent Management Box -->
+            <div class="glass-box agent-management">
                 <h3>Agent Management</h3>
                 <div class="form-group">
-                    <input type="text" id="agentName" placeholder="Enter agent name">
-                    <button id="addAgent">Add Agent</button>
-                </div>
-                <div class="form-group">
-                    <select id="agentList">
-                        <option value="">Select agent to remove</option>
+                    <input type="text" id="agentName" placeholder="Agent Name">
+                    <select id="agentDesignation">
+                        <option value="">Select Designation</option>
+                        <option value="Performance Executive">Performance Executive</option>
+                        <option value="Customer Support">Customer Support</option>
+                        <option value="Risk Executive">Risk Executive</option>
                     </select>
-                    <button id="removeAgent">Remove Agent</button>
+                    <button id="addAgentBtn">Add Agent</button>
+                </div>
+                <div class="agent-list-container">
+                    <h4>Current Agents</h4>
+                    <select id="agentList" multiple size="5"></select>
+                    <button id="removeAgentBtn">Remove Selected Agent</button>
                 </div>
             </div>
 
-            <div class="glass-card kpi-evaluation">
-                <h3>KPI Evaluation</h3>
+            <!-- Evaluation Form -->
+            <div class="glass-box evaluation-form">
+                <h3>Quality Evaluation</h3>
                 <div class="form-group">
-                    <label for="selectedAgent">Select Agent:</label>
-                    <select id="selectedAgent" required>
-                        <option value="">-- Select Agent --</option>
-                    </select>
+                    <label for="evaluationAgent">Select Agent:</label>
+                    <select id="evaluationAgent"></select>
                 </div>
                 
-                <div class="kpi-item">
-                    <label>Proper Greetings (15%)</label>
-                    <input type="number" id="greetings" min="0" max="100" value="0">
+                <div class="kpi-scores">
+                    <div class="kpi-item">
+                        <label>Proper Greetings (15%)</label>
+                        <input type="number" class="kpi-score" data-weight="15" min="0" max="100" placeholder="0-100">
+                    </div>
+                    <div class="kpi-item">
+                        <label>Empathy Shown (20%)</label>
+                        <input type="number" class="kpi-score" data-weight="20" min="0" max="100" placeholder="0-100">
+                    </div>
+                    <div class="kpi-item">
+                        <label>Issue Resolution (25%)</label>
+                        <input type="number" class="kpi-score" data-weight="25" min="0" max="100" placeholder="0-100">
+                    </div>
+                    <div class="kpi-item">
+                        <label>Product Knowledge (20%)</label>
+                        <input type="number" class="kpi-score" data-weight="20" min="0" max="100" placeholder="0-100">
+                    </div>
+                    <div class="kpi-item">
+                        <label>Proper Closing (15%)</label>
+                        <input type="number" class="kpi-score" data-weight="15" min="0" max="100" placeholder="0-100">
+                    </div>
+                    <div class="kpi-item">
+                        <label>Compliance (5%)</label>
+                        <input type="number" class="kpi-score" data-weight="5" min="0" max="100" placeholder="0-100">
+                    </div>
                 </div>
-                <div class="kpi-item">
-                    <label>Empathy Shown (20%)</label>
-                    <input type="number" id="empathy" min="0" max="100" value="0">
+                
+                <div class="form-group">
+                    <label for="evaluationComments">Comments:</label>
+                    <textarea id="evaluationComments" required placeholder="Required feedback for the agent"></textarea>
                 </div>
-                <div class="kpi-item">
-                    <label>Issue Resolution (25%)</label>
-                    <input type="number" id="resolution" min="0" max="100" value="0">
+                
+                <button id="submitEvaluationBtn" class="submit-btn">Submit Evaluation</button>
+            </div>
+
+            <!-- Score History & Improvement Areas -->
+            <div class="side-column">
+                <div class="glass-box score-history">
+                    <h3>Score History</h3>
+                    <canvas id="scoreHistoryChart"></canvas>
                 </div>
-                <div class="kpi-item">
-                    <label>Product Knowledge (20%)</label>
-                    <input type="number" id="knowledge" min="0" max="100" value="0">
-                </div>
-                <div class="kpi-item">
-                    <label>Proper Closing (15%)</label>
-                    <input type="number" id="closing" min="0" max="100" value="0">
-                </div>
-                <div class="kpi-item">
-                    <label>Compliance (5%)</label>
-                    <input type="number" id="compliance" min="0" max="100" value="0">
+                
+                <div class="glass-box improvement-areas">
+                    <h3>Areas for Improvement</h3>
+                    <ul id="improvementList"></ul>
                 </div>
             </div>
 
-            <div class="glass-card comments">
-                <h3>Evaluation Comments</h3>
-                <textarea id="evaluationComments" placeholder="Enter your evaluation comments..." required></textarea>
-            </div>
-
-            <div class="glass-card score-history">
-                <h3>Score History</h3>
-                <canvas id="scoreChart"></canvas>
-            </div>
-
-            <div class="glass-card improvement-areas">
-                <h3>Areas for Improvement</h3>
-                <ul id="improvementList">
-                    <!-- Will be populated by JavaScript -->
-                </ul>
-            </div>
-
-            <div class="glass-card performance-filter">
+            <!-- Performance Filter -->
+            <div class="glass-box performance-filter">
                 <h3>Performance Filter</h3>
                 <div class="form-group">
                     <label>Select Agents:</label>
-                    <select id="filterAgents" multiple>
-                        <!-- Agents will be populated here -->
+                    <select id="filterAgents" multiple size="3"></select>
+                </div>
+                <div class="form-group">
+                    <label>Date Range:</label>
+                    <div class="date-range">
+                        <input type="date" id="startDate">
+                        <span>to</span>
+                        <input type="date" id="endDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Filter by Designation:</label>
+                    <select id="filterDesignation">
+                        <option value="">All Designations</option>
+                        <option value="Performance Executive">Performance Executive</option>
+                        <option value="Customer Support">Customer Support</option>
+                        <option value="Risk Executive">Risk Executive</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>From:</label>
-                    <input type="date" id="startDate">
-                </div>
-                <div class="form-group">
-                    <label>To:</label>
-                    <input type="date" id="endDate">
-                </div>
-                <button id="filterResults">Filter Results</button>
-                <button id="viewPerformanceChart">Performance Chart</button>
+                <button id="filterResultsBtn" class="filter-btn">View Results</button>
+                <button id="viewPerformanceChartBtn" class="chart-btn">Performance Chart</button>
             </div>
-
-            <button id="submitEvaluation" class="submit-btn">Submit Evaluation</button>
         </main>
     </div>
 
-    <script src="scripts/chart.js"></script>
-    <script src="scripts/main.js"></script>
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content glass-box">
+            <p id="modalMessage"></p>
+            <div class="modal-buttons">
+                <button id="confirmActionBtn">Confirm</button>
+                <button id="cancelActionBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/utils.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 </html>

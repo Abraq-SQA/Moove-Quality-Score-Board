@@ -6,10 +6,9 @@
     <title>MOOVE NG - Team Performance</title>
     <link rel="stylesheet" href="styles/performance.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="scripts/main.js"></script>
 </head>
 <body>
-    <div class="background-overlay"></div>
+    <div class="background-image"></div>
     <div class="container">
         <header>
             <h1>MOOVE NG</h1>
@@ -17,23 +16,30 @@
         </header>
 
         <main>
-            <div class="glass-card performance-container">
-                <div class="performance-header">
+            <div class="glass-box performance-header">
+                <div class="performance-info">
                     <h3>Team Performance Overview</h3>
-                    <button id="backToResults">Back to Results</button>
+                    <p id="performanceDateRange"></p>
+                    <p id="performanceDesignation"></p>
                 </div>
-                
-                <div class="filter-info">
-                    <p id="performanceFilterDetails"></p>
-                </div>
-                
-                <div class="chart-container">
-                    <canvas id="performanceChart"></canvas>
+                <button id="backFromPerformanceBtn" class="back-btn">Back to Main</button>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="teamPerformanceChart"></canvas>
+            </div>
+
+            <div class="glass-box kpi-summary">
+                <h3>KPI Summary</h3>
+                <div class="kpi-stats" id="kpiStats">
+                    <!-- KPI stats will be populated here -->
                 </div>
             </div>
         </main>
     </div>
 
-    <script src="scripts/performance.js"></script>
+    <script type="module" src="scripts/utils.js"></script>
+    <script type="module" src="scripts/chart.js"></script>
+    <script type="module" src="scripts/performance.js"></script>
 </body>
 </html>

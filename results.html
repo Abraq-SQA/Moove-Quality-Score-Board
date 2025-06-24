@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles/results.css">
 </head>
 <body>
-    <div class="background-overlay"></div>
+    <div class="background-image"></div>
     <div class="container">
         <header>
             <h1>MOOVE NG</h1>
@@ -15,44 +15,37 @@
         </header>
 
         <main>
-            <div class="glass-card results-container">
-                <div class="results-header">
-                    <h3>Filtered Evaluation Results</h3>
-                    <div class="actions">
-                        <button id="exportToSheet">Export to Sheet</button>
-                        <button id="backToMain">Back to Main</button>
-                    </div>
+            <div class="glass-box results-header">
+                <div class="results-info">
+                    <h3 id="resultsTitle">Performance Results</h3>
+                    <p id="resultsDateRange"></p>
+                    <p id="resultsAgents"></p>
+                    <p id="resultsDesignation"></p>
                 </div>
-                
-                <div class="filter-info">
-                    <p id="filterDetails"></p>
-                </div>
-                
-                <div class="table-container">
-                    <table id="resultsTable">
-                        <thead>
-                            <tr>
-                                <th>Agent</th>
-                                <th>Date</th>
-                                <th>Greetings</th>
-                                <th>Empathy</th>
-                                <th>Resolution</th>
-                                <th>Knowledge</th>
-                                <th>Closing</th>
-                                <th>Compliance</th>
-                                <th>Total Score</th>
-                                <th>Comments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Results will be populated here -->
-                        </tbody>
-                    </table>
-                </div>
+                <button id="exportToSheetsBtn" class="export-btn">Export to Sheets</button>
+                <button id="backToMainBtn" class="back-btn">Back to Main</button>
+            </div>
+
+            <div class="results-container" id="resultsContainer">
+                <!-- Results will be populated here by JavaScript -->
             </div>
         </main>
     </div>
 
-    <script src="scripts/results.js"></script>
+    <!-- Edit Comment Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content glass-box">
+            <h3>Edit Comment</h3>
+            <textarea id="editCommentTextarea"></textarea>
+            <div class="modal-buttons">
+                <button id="saveCommentBtn">Save</button>
+                <button id="cancelEditBtn">Cancel</button>
+                <button id="deleteEvaluationBtn" class="delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/utils.js"></script>
+    <script type="module" src="scripts/results.js"></script>
 </body>
 </html>
